@@ -1,0 +1,14 @@
+[Unit]
+Description=Go Hello HTTP Service
+After=network-online.target
+
+[Service]
+User=root
+Type=simple
+ExecStart=/opt/go-hello/hello
+StandardOutput=journal+console
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
