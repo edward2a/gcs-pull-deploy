@@ -49,15 +49,16 @@ get_artefact() {
 }
 
 unpack_artefact() {
+    [[ ! -d ${VAR_DATA}/deploy_pkg ]] || rm -rf ${VAR_DATA}/deploy_pkg
     mkdir ${VAR_DATA}/deploy_pkg
 
     case ${ARTEFACT_NAME##*.} in
         zip)
             cd ${VAR_DATA}/deploy_pkg
-            unzip ${ARTEFACT_NAME} || die "Failed unpacking artefact"
+            unzip ${VAR_DATA}/${ARTEFACT_NAME} || die "Failed unpacking artefact"
             ;;
         tgz|gz)
-            tar -C ${VAR_DATA}/deploy_pkg -xf ${ARTEFACT_NAME} || die "Failed unpacking artefact"
+            tar -C ${VAR_DATA}/deploy_pkg -xf ${VAR_DATA}/${ARTEFACT_NAME} || die "Failed unpacking artefact"
             ;;
     esac
 }
