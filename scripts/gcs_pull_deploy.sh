@@ -24,7 +24,7 @@ load_config() {
 
 get_metadata() {
     if [ -z "${1}" ]; then
-        echo -e "ERROR: Missing parameter - metadata key"; exit 1
+        die "Missing parameter - metadata key"
     else
         curl -fs -H 'Metadata-Flavor: Google' "${METADATA_BASE_URL}/${1}" || \
             die "Curl exit ${?}" ${?}
