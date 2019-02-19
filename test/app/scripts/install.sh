@@ -13,4 +13,4 @@ install -m 644 -o root -g root -D -t /usr/local/lib/systemd/system go-hello.serv
 
 systemctl daemon-reload
 systemctl enable go-hello
-systemctl start go-hello
+systemctl restart go-hello
