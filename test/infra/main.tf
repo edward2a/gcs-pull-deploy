@@ -45,6 +45,13 @@ data template_file metadata_startup {
 
 }
 
+data template_file gcs_deploy_test {
+  template = "${file("files/gcs-pd-deploy-test.sh.tpl")}"
+  vars = {
+    bucket = "${google_storage_bucket_object.gcs_pd_pkg.bucket}"
+  }
+}
+
 resource google_compute_instance gcs_pd_test {
 
   name              = "gcs-pd-test"
@@ -67,5 +74,10 @@ resource google_compute_instance gcs_pd_test {
     service_name  = "go-hello"
     environment   = "dev"
     config_url    = "${google_storage_bucket.test_bucket.name}/go-hello/config/deploy"
+  }
+
+  provisioner local-exec {
+    command     = "${data.template_file.gcs_deploy_test.rendered}"
+    on_failure  = "continue"
   }
 }
