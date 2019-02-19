@@ -9,8 +9,6 @@ RemainAfterExit=1
 ExecStart=/opt/gcs_pd/gcs_pull_deploy.sh
 TimeoutSec=180
 StandardOutput=journal+console
-Restart=on-failure
-RestartSec=60
 
 [Install]
 WantedBy=multi-user.target
