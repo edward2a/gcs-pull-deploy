@@ -81,6 +81,7 @@ main() {
     unpack_artefact
     install_application
     start_application ${SERVICE_NAME}
+    info 'Finished!'
 }
 
 # Execute
