@@ -7,6 +7,10 @@ METADATA_BASE_URL="http://metadata.google.internal/computeMetadata/v1/instance/a
 
 
 #### COMMON FUNCS ####
+info() {
+    logger -t gcs-pd -s "INFO: ${1}"
+}
+
 die() {
     local ERR
     ERR=${2:-1}
