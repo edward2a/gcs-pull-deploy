@@ -80,3 +80,6 @@ main() {
     install_application
     start_application ${SERVICE_NAME}
 }
+
+# Execute
+main
