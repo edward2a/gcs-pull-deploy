@@ -26,7 +26,7 @@ get_metadata() {
     if [ -z "${1}" ]; then
         echo -e "ERROR: Missing parameter - metadata key"; exit 1
     else
-        curl -s -H 'Metadata-Flavor: Google' "${METADATA_BASE_URL}/${1}" || \
+        curl -fs -H 'Metadata-Flavor: Google' "${METADATA_BASE_URL}/${1}" || \
             die "ERROR: Curl exit ${?}" ${?}
     fi
 }
