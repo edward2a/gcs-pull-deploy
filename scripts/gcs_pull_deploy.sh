@@ -77,6 +77,7 @@ main() {
     get_instance_params
     get_deployment_config
     get_artefact ${ARTEFACT_URL}
+    unpack_artefact
     install_application
     start_application ${SERVICE_NAME}
 }
