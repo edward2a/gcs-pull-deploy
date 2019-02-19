@@ -1,6 +1,6 @@
 
-INSTALL_DIR=/opt/gcs_pd
-VAR_DATA=/var/gcs_pd
+INSTALL_DIR=/opt/gcs-pd
+VAR_DATA=/var/gcs-pd
 INIT_SCRIPT_DIR=/usr/local/lib/systemd/system
 CONFIG_FILE=${INSTALL_DIR}/config.shvar
 

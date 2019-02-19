@@ -2,7 +2,7 @@
 set -u
 
 #### COMMON VARS ####
-CONFIG_FILE="/opt/gcs_pd/config.shvar"
+CONFIG_FILE="/opt/gcs-pd/config.shvar"
 METADATA_BASE_URL="http://metadata.google.internal/computeMetadata/v1/instance/attributes"
 
 
@@ -14,7 +14,7 @@ info() {
 die() {
     local ERR
     ERR=${2:-1}
-    logger -t gcs_pd -s "ERROR: ${1}"
+    logger -t gcs-pd -s "ERROR: ${1}"
     exit ${ERR}
 }
 
