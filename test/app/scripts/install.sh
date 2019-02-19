@@ -3,6 +3,7 @@
 INSTALL_DIR=/opt/go-hello
 
 
+[ ! -d ${INSTALL_DIR} ] || rm -rf ${INSTALL_DIR}
 mkdir ${INSTALL_DIR}
 chown root:root /opt/go-hello
 chmod 750 /opt/go-hello
