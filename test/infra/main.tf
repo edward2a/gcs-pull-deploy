@@ -48,6 +48,15 @@ resource google_compute_subnetwork gcs_pd_test_s1 {
   ip_cidr_range = "172.16.0.0/24"
 }
 
+resource google_compute_firewall http_ingress {
+  name    = "http-ingress"
+  network = "${google_compute_network.gcs_pd_test.self_link}"
+
+  allow = [{
+    protocol  = "tcp"
+    ports     = ["80"]
+  }]
+}
 
 ### INSTANCE ###
 
