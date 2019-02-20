@@ -103,7 +103,8 @@ resource google_compute_instance gcs_pd_test {
     project_name  = "gcs-pd"
     service_name  = "go-hello"
     environment   = "dev"
-    config_url    = "gs://${google_storage_bucket.test_bucket.name}/go-hello/config/deploy"
+    deploy_info   = "gs://${google_storage_bucket.test_bucket.name}/go-hello/config/deploy"
+    config_url    = ""
   }
 
   provisioner local-exec {

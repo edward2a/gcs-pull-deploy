@@ -35,11 +35,12 @@ get_instance_params() {
     PROJECT_NAME="$(get_metadata project_name)" || die "Failed fetching project_name"
     SERVICE_NAME="$(get_metadata service_name)" || die "Failed fetching service_name"
     ENVIRONMENT="$(get_metadata environment)" || die "Failed fetching environment"
+    DEPLOY_INFO="$(get_metadata deploy_info)" || die "Failed fetching deploy_info"
     CONFIG_URL="$(get_metadata config_url)" || die "Failed fetching config_url"
 }
 
 get_deployment_config() {
-    gsutil cp ${CONFIG_URL} ${VAR_DATA}/ 2>>${VAR_DATA}/gsutil.log || die "Failed downloading deployment configuration"
+    gsutil cp ${DEPLOY_INFO} ${VAR_DATA}/ 2>>${VAR_DATA}/gsutil.log || die "Failed downloading deployment configuration"
     source ${VAR_DATA}/deploy
     ARTEFACT_NAME=${ARTEFACT_URL##*/}
 }
