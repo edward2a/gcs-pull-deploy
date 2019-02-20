@@ -16,7 +16,7 @@ resource google_storage_bucket test_bucket {
 
 resource google_storage_bucket_object gcs_pd_pkg {
   name    = "pkg/gcs_pd.tar.gz"
-  source  = "files/gcs_pd.tar.gz"
+  source  = "files/gcs-pd.tar.gz"
   bucket  = "${google_storage_bucket.test_bucket.name}"
 }
 
