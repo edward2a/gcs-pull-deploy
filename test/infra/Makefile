@@ -13,4 +13,4 @@ check-deps:
 
 clean:
 	terraform destroy -auto-approve
-	rm plan.log output.log terraform.tfstate terraform.tfstate.backup*
+	rm -f plan.log output.log terraform.tfstate terraform.tfstate.backup*
