@@ -43,7 +43,7 @@ resource google_compute_network gcs_pd_test {
 
 resource google_compute_subnetwork gcs_pd_test_s1 {
   name = "gcs-pd-test-s1"
-  region = "${local.zone}"
+  region = "${local.region}"
   network = "${google_compute_network.gcs_pd_test.name}"
   ip_cidr_range = "172.16.0.0/24"
 }
@@ -71,7 +71,7 @@ data template_file gcs_deploy_test {
 resource google_compute_instance gcs_pd_test {
 
   name          = "gcs-pd-test"
-  machine_type  = "f1.micro"
+  machine_type  = "f1-micro"
   zone          = "${local.zone}"
 
   network_interface = {
@@ -83,6 +83,10 @@ resource google_compute_instance gcs_pd_test {
     initialize_params = {
       image = "centos-7-v20190213"
     }
+  }
+
+  service_account = {
+    scopes = ["monitoring-write", "logging-write", "storage-rw]
   }
 
   metadata_startup_script = "${data.template_file.metadata_startup.rendered}"
