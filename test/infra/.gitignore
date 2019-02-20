@@ -1,4 +1,4 @@
-.terraform
+.terraform*
 terraform.*
 plan.log
 files/*.tar.gz
