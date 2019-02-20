@@ -49,6 +49,9 @@ The test consist of:
     - Google Cloud SDK (the gcloud cli tool)
 
 ### Execution
+The sample below uses variables for passing credentials and project to terraform.
+If you prefer to enter these manually, simply execute 'make test'.
+
 ```
     #  export TF_VAR_google_credentials="$(cat <PATH_TO_GCP_ACCOUNT_JSON_KEY>)"
     #  export TF_VAR_google_project=<GCP_PROJECT_ID>
