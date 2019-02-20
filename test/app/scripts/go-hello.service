@@ -5,7 +5,7 @@ After=network-online.target
 [Service]
 User=root
 Type=simple
-ExecStart=/opt/go-hello/hello
+ExecStart=/opt/go-hello/go-hello
 StandardOutput=journal+console
 Restart=on-failure
 RestartSec=5
