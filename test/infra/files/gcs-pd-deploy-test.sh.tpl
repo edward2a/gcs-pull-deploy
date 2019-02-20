@@ -10,17 +10,17 @@ while ! RESULT=$(gsutil cat gs://$${BUCKET}/result.log); do
     sleep $${WAIT_SECS}
     let IDX++
 
-    if [[ $${IDX} > $${MAX_LOOP} ]]; then
+    if [[ $${IDX} -gt $${MAX_LOOP} ]]; then
         echo "ERROR: Timed out waiting for deployment result"
         exit 1
     fi
 
 done
 
-if [[ $${RESULT##:} == "success" ]]; then
+if [[ $${RESULT##*:} == "success" ]]; then
     echo 'INFO: Installation of gcs-pd is successful!'
-    exit :0
-elif [[ $${RESULT##:} == "fail" ]]; then
+    exit 0
+elif [[ $${RESULT##*:} == "fail" ]]; then
     echo 'ERROR: Installation of gcs-pd is fail!'
     exit 1
 fi
