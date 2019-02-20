@@ -1,6 +1,7 @@
 deploy: check-deps
 	terraform plan -out plan.log
 	terraform apply plan.log
+	terraform output > output.log
 
 plan:
 	terraform plan
@@ -12,3 +13,4 @@ check-deps:
 
 clean:
 	terraform destroy -auto-approve
+	rm plan.log output.log terraform.tfstate terraform.tfstate.backup*
