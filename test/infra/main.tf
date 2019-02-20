@@ -86,7 +86,7 @@ resource google_compute_instance gcs_pd_test {
   }
 
   service_account = {
-    scopes = ["monitoring-write", "logging-write", "storage-rw]
+    scopes = ["monitoring-write", "logging-write", "storage-rw"]
   }
 
   metadata_startup_script = "${data.template_file.metadata_startup.rendered}"
@@ -94,7 +94,7 @@ resource google_compute_instance gcs_pd_test {
     project_name  = "gcs-pd"
     service_name  = "go-hello"
     environment   = "dev"
-    config_url    = "${google_storage_bucket.test_bucket.name}/go-hello/config/deploy"
+    config_url    = "gs://${google_storage_bucket.test_bucket.name}/go-hello/config/deploy"
   }
 
   provisioner local-exec {
