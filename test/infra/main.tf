@@ -33,6 +33,22 @@ resource google_storage_bucket_object deploy_config {
 }
 
 
+### VPC ###
+
+resource google_compute_network gcs_pd_test {
+  name = "gcs-pd-test"
+  routing_mode = "REGIONAL"
+  auto_create_subnetworks = "false"
+}
+
+resource google_compute_subnetwork gcs_pd_test_s1 {
+  name = "gcs-pd-test-s1"
+  region = "${local.zone}"
+  network = "${google_compute_network.gcs_pd_test.name}"
+  ip_cidr_range = "172.16.0.0/24"
+}
+
+
 ### INSTANCE ###
 
 data template_file metadata_startup {
@@ -54,11 +70,12 @@ data template_file gcs_deploy_test {
 
 resource google_compute_instance gcs_pd_test {
 
-  name              = "gcs-pd-test"
-  machine_type      = "f1.micro"
+  name          = "gcs-pd-test"
+  machine_type  = "f1.micro"
+  zone          = "${local.zone}"
 
   network_interface = {
-    network       = "default"
+    subnetwork    = "${google_compute_subnetwork.gcs_pd_test_s1.self_link}"
     access_config = {}
   }
 
