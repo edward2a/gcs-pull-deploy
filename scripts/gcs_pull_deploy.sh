@@ -39,7 +39,7 @@ get_instance_params() {
 }
 
 get_deployment_config() {
-    gsutil cp ${CONFIG_URL}/deploy ${VAR_DATA}/ 2>>${VAR_DATA}/gsutil.log || die "Failed downloading deployment configuration"
+    gsutil cp ${CONFIG_URL} ${VAR_DATA}/ 2>>${VAR_DATA}/gsutil.log || die "Failed downloading deployment configuration"
     source ${VAR_DATA}/deploy
     ARTEFACT_NAME=${ARTEFACT_URL##*/}
 }
