@@ -23,6 +23,6 @@ build-pkg: output/${code}
 
 .PHONY: clean
 clean:
-	rm -f output/pkg/*
-	rmdir output/pkg
+	[ ! -d output/pkg ] || rm -f output/pkg/*
+	[ ! -d output/pkg ] || rmdir output/pkg
 	rm -f output/*
