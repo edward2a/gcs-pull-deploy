@@ -28,7 +28,7 @@ resource google_storage_bucket_object go_hello {
 
 resource google_storage_bucket_object deploy_config {
   name    = "go-hello/config/deploy"
-  content = "ARTEFACT_URL=${google_storage_bucket_object.go_hello.bucket}/${google_storage_bucket_object.go_hello.name}"
+  content = "ARTEFACT_URL=gs://${google_storage_bucket_object.go_hello.bucket}/${google_storage_bucket_object.go_hello.name}"
   bucket  = "${google_storage_bucket.test_bucket.name}"
 }
 
