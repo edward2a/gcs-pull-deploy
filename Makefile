@@ -22,6 +22,7 @@ test: prepare-test
 clean:
 	rm -f output/*
 	cd test/app && make clean
+	cd test/infra && make clean
 
 ### FILE TARGETS ###
 
