@@ -5,7 +5,7 @@ IDX=0
 WAIT_SECS=10
 MAX_LOOP=12
 
-while ! RESULT=$(gsutil cat gs://gcs-pd-test/config/deploy); do
+while ! RESULT=$(gsutil cat gs://$${BUCKET}/result.log); do
     echo "INFO: Waiting for gcs-pd deployment result..."
     sleep $${WAIT_SECS}
     let IDX++
