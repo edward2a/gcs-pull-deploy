@@ -15,6 +15,9 @@ build-test-app-pkg:
 prepare-test: test-pkgs
 
 test-pkgs: output/gcs-pd.tar.gz output/go-hello.tar.gz
+	cp -v output/gcs-pd.tar.gz output/go-hello.tar.gz test/infra/files/
+
+test: prepare-test
 
 clean:
 	rm -f output/*
